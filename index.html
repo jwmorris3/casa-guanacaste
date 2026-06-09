@@ -194,13 +194,13 @@
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = 'Sending...';
-    const body = new URLSearchParams({
+    const params = new URLSearchParams({
       name: document.getElementById('guestName').value,
       email: document.getElementById('guestEmail').value,
       source: 'casa-guanacaste-landing'
     });
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbwUGF5sNHyqVPyFuwfFeXERynyIur0E2GKnvLPF0mZ6ORHErgIMjq0hLd6bJEQ2zD28tg/exec', { method: 'POST', mode: 'no-cors', body });
+      await fetch('https://script.google.com/macros/s/AKfycbwUGF5sNHyqVPyFuwfFeXERynyIur0E2GKnvLPF0mZ6ORHErgIMjq0hLd6bJEQ2zD28tg/exec?' + params.toString(), { method: 'GET', mode: 'no-cors' });
       document.getElementById('guestForm').style.display = 'none';
       document.getElementById('formSuccess').style.display = '';
     } catch {
